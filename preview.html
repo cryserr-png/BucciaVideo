@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il Mio Cinema</title>
+
+<style>
+body { margin: 0; background: #111; font-family: Arial, sans-serif; color: white; }
+header { padding: 20px; font-size: 1.8em; color: #e50914; font-weight: bold; }
+
+.bio { padding: 20px; max-width: 700px; margin: auto; color: #ccc; text-align: center; line-height: 1.6; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px; padding: 20px; max-width: 1000px; margin: auto;
+}
+
+.card { position: relative; height: 300px; border-radius: 12px; overflow: hidden; cursor: pointer; }
+
+.card img {
+  width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s;
+}
+.card:hover img { transform: scale(1.05); }
+
+.overlay {
+  position: absolute; bottom: 0; width: 100%; padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
+.video-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95); display: none;
+  justify-content: center; align-items: center; z-index: 1000;
+}
+
+.video-overlay iframe { width: 80%; height: 80%; }
+
+.close {
+  position: absolute; top: 20px; right: 30px; font-size: 30px; cursor: pointer;
+}
+
+.hero {
+  height: 80vh;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url('IMG_5607.PNG') center/cover no-repeat;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+}
+
+.contacts { margin-top: 40px; padding: 30px 20px; text-align: center; }
+
+.contact-btn {
+  padding: 12px 25px; background: #e50914; color: white;
+  border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;
+}
+
+.instagram {
+  margin-top: 15px; display: block; color: #ccc; text-decoration: none; font-size: 1.1em;
+}
+.instagram:hover { color: white; }
+</style>
+</head>
+
+<body>
+
+<header>Il Mio Cinema</header>
+
+<div class="hero">
+  <div>
+    <h1>Antonio Bucciarelli — Regista</h1>
+  </div>
+</div>
+
+<div class="bio">
+Da quest'anno mi sono appassionato al cinema, soprattutto grazie ai miei amici, e ho deciso di diventare un regista, utilizzando tutto il mio tempo libero per questo obiettivo. 
+Mi piace raccontare storie attraverso le immagini, creare tensione, emozione e atmosfera anche in pochi minuti. 
+Ogni progetto è per me un modo per migliorare, sperimentare e trovare sempre di più il mio stile. 
+Il mio obiettivo è crescere passo dopo passo fino a riuscire a realizzare il mio primo lungometraggio.
+</div>
+
+<div class="grid" id="grid">
+
+  <div class="card" onclick="openVideo('https://www.youtube.com/embed/UdX05HqmPS8')">
+    <img src="frame_0.jpg">
+    <div class="overlay"><h3>Non voltarti</h3></div>
+  </div>
+
+  <div class="card" onclick="openVideo('https://www.youtube.com/embed/ImzF6UkOMa8')">
+    <img src="tipo.PNG">
+    <div class="overlay"><h3>Il tipo sbagliato</h3></div>
+  </div>
+
+  <div class="card" onclick="openVideo('https://www.youtube.com/embed/zfuIwIcYDN0')">
+    <img src="IMG_5604.PNG">
+    <div class="overlay"><h3>Tradimento</h3></div>
+  </div>
+
+</div>
+
+<div class="video-overlay" id="videoOverlay">
+  <span class="close" onclick="closeVideo()">✕</span>
+  <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="contacts">
+  <a class="contact-btn" href="mailto:cryserr@hotmail.it">✉️ Contattami</a>
+  <a class="instagram" href="https://instagram.com/bucciaoff" target="_blank">📷 @bucciaoff</a>
+</div>
+
+<script>
+function openVideo(url) {
+  document.getElementById('videoFrame').src = url;
+  document.getElementById('videoOverlay').style.display = 'flex';
+}
+
+function closeVideo() {
+  document.getElementById('videoOverlay').style.display = 'none';
+  document.getElementById('videoFrame').src = '';
+}
+</script>
+
+</body>
+</html>
